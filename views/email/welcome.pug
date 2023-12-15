@@ -1,0 +1,17 @@
+extends baseEmail
+
+block content
+  p Xin chào #{firstName}!,
+  p Chào mừng bạn đến với Global Phones, chúng tôi rất vinh dự chào đón bạn! 🎉🙏
+  p Vui lòng cập nhật ảnh để chúng tôi biết thêm về bạn nhiều hơn
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+            tbody
+              tr
+                td
+                  a(href=`${url}`, target='_blank') Upload user photo
+  p Nếu bạn cần giúp đỡ, đừng ngại liên hệ với chúng tôi
+  p - Ngo Diep, CEO

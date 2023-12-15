@@ -1,0 +1,10 @@
+const Category = require('../models/categoryModel');
+const factory = require('./handleFactory');
+
+exports.getAllCategories = factory.getAll(Category);
+exports.createCategory = factory.createOne(Category);
+exports.getCategory = factory.getOne(Category, {
+  path: 'phones',
+});
+exports.updateCategory = factory.updateOne(Category);
+exports.deleteCategory = factory.deleteOne(Category);
