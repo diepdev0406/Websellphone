@@ -10,14 +10,20 @@ exports.setPhoneUserIds = (req, res, next) => {
   next();
 };
 
-exports.addToCart = factory.createOne(Cart);
-
-exports.getMyCart = catchAsync(async (req, res, next) => {
-  const carts = await Cart.find({ user: req.user._id });
+exports.addToCart = catchAsync(async (req, res, next) => {
+  let cart = await Cart.findOne({ user: req.body.user, phone: req.body.phone });
+  if (cart) {
+    cart.quantityAdd += req.body.quantityAdd || 1;
+    await cart.save();
+  } else {
+    cart = await Cart.create(req.body);
+  }
   res.status(201).json({
     status: 'success',
     data: {
-      carts,
+      cart,
     },
   });
 });
+
+exports.getAllCart = factory.getAll(Cart);

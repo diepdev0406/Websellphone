@@ -2,10 +2,12 @@ const express = require('express');
 const phoneController = require('../controllers/phoneController');
 const authController = require('../controllers/authController');
 const reviewRouter = require('./reviewRoutes');
+const cartRouter = require('./cartRoutes');
 
 const router = express.Router();
 
 router.use('/:phoneId/reviews', reviewRouter);
+router.use('/:phoneId/carts', cartRouter);
 
 router
   .route('/')
