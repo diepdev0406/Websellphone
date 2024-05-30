@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const Phone = require('./phoneModel');
+const Product = require('./productModel');
 
 const reviewSchema = new mongoose.Schema(
   {
     review: {
       type: String,
-      required: [true, 'Review can not be empty!'],
+      required: [true, 'Review không được để trống!'],
     },
     rating: {
       type: Number,
@@ -16,15 +16,15 @@ const reviewSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-    phone: {
+    product_id: {
       type: mongoose.Schema.ObjectId,
-      ref: 'Phone',
-      required: [true, 'Review must belong to a phone.'],
+      ref: 'Product',
+      required: [true, 'Review phải cho 1 sản phẩm!'],
     },
-    user: {
+    user_id: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: [true, 'Review must belong to a user'],
+      required: [true, 'Review phải của 1 người dùng!'],
     },
   },
   {
@@ -33,32 +33,32 @@ const reviewSchema = new mongoose.Schema(
   },
 );
 
-reviewSchema.index({ phone: 1, user: 1 }, { unique: true });
+// reviewSchema.index({ user_id: 1 }, { unique: true });
 
 reviewSchema.pre(/^find/, function (next) {
-  // this.populate({
-  //   path: 'tour',
-  //   select: 'name'
-  // }).populate({
-  //   path: 'user',
-  //   select: 'name photo'
-  // });
-
   this.populate({
-    path: 'user',
+    path: 'product_id',
     select: 'name',
+  }).populate({
+    path: 'user_id',
+    select: 'name photo',
   });
+
+  // this.populate({
+  //   path: 'user_id',
+  //   select: 'name',
+  // });
   next();
 });
 
-reviewSchema.statics.calcAverageRatings = async function (phoneId) {
+reviewSchema.statics.calcAverageRatings = async function (productId) {
   const stats = await this.aggregate([
     {
-      $match: { phone: phoneId },
+      $match: { product_id: productId },
     },
     {
       $group: {
-        _id: '$phone',
+        _id: '$product_id',
         nRating: { $sum: 1 },
         avgRating: { $avg: '$rating' },
       },
@@ -67,12 +67,12 @@ reviewSchema.statics.calcAverageRatings = async function (phoneId) {
   // console.log(stats);
 
   if (stats.length > 0) {
-    await Phone.findByIdAndUpdate(phoneId, {
+    await Product.findByIdAndUpdate(productId, {
       ratingsQuantity: stats[0].nRating,
       ratingsAverage: stats[0].avgRating,
     });
   } else {
-    await Phone.findByIdAndUpdate(phoneId, {
+    await Product.findByIdAndUpdate(productId, {
       ratingsQuantity: 0,
       ratingsAverage: 4.5,
     });
@@ -81,7 +81,7 @@ reviewSchema.statics.calcAverageRatings = async function (phoneId) {
 
 reviewSchema.post('save', function () {
   // this points to current review
-  this.constructor.calcAverageRatings(this.phone);
+  this.constructor.calcAverageRatings(this.product_id);
 });
 
 // findByIdAndUpdate
@@ -94,7 +94,7 @@ reviewSchema.pre(/^findOneAnd/, async function (next) {
 
 reviewSchema.post(/^findOneAnd/, async function () {
   // await this.findOne(); does NOT work here, query has already executed
-  await this.r.constructor.calcAverageRatings(this.r.phone);
+  await this.r.constructor.calcAverageRatings(this.r.product_id);
 });
 
 const Review = mongoose.model('Review', reviewSchema);

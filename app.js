@@ -10,12 +10,14 @@ const cookieParser = require('cookie-parser');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
-const phoneRouter = require('./routes/phoneRoutes');
+const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const categoryRouter = require('./routes/categoryRoutes');
 const cartRouter = require('./routes/cartRoutes');
+
+// const cartMiddleware = require('./middlewares/cartMiddleware');
 
 const app = express();
 
@@ -55,7 +57,7 @@ app.use(xss());
 
 // 3) ROUTES
 app.use('/', viewRouter);
-app.use('/api/v1/phones', phoneRouter);
+app.use('/api/v1/products', productRouter);
 app.use('/api/v1/categories', categoryRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);

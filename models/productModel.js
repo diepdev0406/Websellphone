@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 
-const phoneSchema = mongoose.Schema(
+const productSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'A phone must have a name'],
+      required: [true, 'Sản phẩm bắt buộc phải có tên!'],
       unique: true,
       trim: true,
     },
@@ -17,21 +17,21 @@ const phoneSchema = mongoose.Schema(
     ratingsAverage: {
       type: Number,
       default: 4.5,
-      max: [5, 'Rating must be below 5.0'],
-      min: [1, 'Rating must be above 1.0'],
+      max: [5, 'Đánh giá không được quá 5.0'],
+      min: [1, 'Đánh giá phải từ 1.0'],
       set: (val) => Math.round(val * 10) / 10,
     },
     price: {
       type: Number,
-      required: [true, 'A phone must have a price'],
+      required: [true, 'Sản phẩm bắt buộc phải có giá bán!'],
     },
     quantity: {
       type: Number,
-      required: [true, 'A phone must have a quantity'],
+      required: [true, 'Sản phẩm bắt buộc phải có số lượng'],
     },
-    image: String,
+    thumbnail: String,
     description: String,
-    category: {
+    category_id: {
       type: mongoose.Schema.ObjectId,
       ref: 'Category',
     },
@@ -47,24 +47,28 @@ const phoneSchema = mongoose.Schema(
   },
 );
 
-phoneSchema.virtual('reviews', {
+productSchema.virtual('reviews', {
   ref: 'Review',
-  foreignField: 'phone',
+  foreignField: 'product',
   localField: '_id',
 });
 
-phoneSchema.pre('save', function (next) {
+productSchema.pre('save', function (next) {
+  if (!this.isModified('name')) return next();
   this.slug = slugify(this.name, { lower: true });
 
   next();
 });
 
-phoneSchema.pre(/^find/, function (next) {
-  this.find().select('-__v');
+productSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'category',
+    select: 'name',
+  });
 
   next();
 });
 
-const Phone = mongoose.model('Phone', phoneSchema);
+const Product = mongoose.model('Product', productSchema);
 
-module.exports = Phone;
+module.exports = Product;

@@ -6,7 +6,7 @@
         "ratingsAverage": 4.7,
         "price": 6690000,
         "quantity": 20,
-        "image": "samsung-galaxy-m34-5g.jpg",
+        "thumbnail": "samsung-galaxy-m34-5g.jpg",
         "category": "656495258833e6e0600d39d0",
         "description": "Samsung M34 5G là chiếc điện thoại làm nên ấn tượng nhờ chip Exynos 1280 mạnh mẽ và ROM 128 GB, RAM 8GB. Cùng với đó là hệ thống 3 camera với cảm biến chính 50MP, góc siêu rộng 8 MP + macro 2 MP và camera selfie 13MP. Cạnh đó, màn hình Super AMOLED cao cấp, tần số quét 120Hz và viên pin 6000mAh còn tạo nên những điểm nhấn đặc biệt cho chiếc smartphone này."
     },
@@ -17,7 +17,7 @@
         "ratingsAverage": 4.5,
         "price": 4790000,
         "quantity": 25,
-        "image": "xiaomi-redmi-note-12.jpg",
+        "thumbnail": "xiaomi-redmi-note-12.jpg",
         "category": "6564953c8833e6e0600d39d4",
         "description": "Xiaomi Redmi Note 12 8GB 128GB tỏa sáng với diện mạo viền vuông cực thời thượng cùng hiệu suất mạnh mẽ nhờ sở hữu con chip Snapdragon 685 ấn tượng. Chất lượng hiển thị hình ảnh của Redmi Note 12 Vàng cũng khá sắc nét thông qua tấm nền AMOLED 120Hz hiện đại. Chưa hết, máy còn sở hữu cụm 3 camera với độ rõ nét lên tới 50MP cùng viên pin 5000mAh và s ạc nhanh 33W giúp đáp ứng được mọi nhu cầu sử dụng của người dùng."
     },
@@ -28,7 +28,7 @@
         "ratingsAverage": 4.6,
         "price": 22290000,
         "quantity": 15,
-        "image": "s23-ultra.jpg",
+        "thumbnail": "s23-ultra.jpg",
         "category": "656495258833e6e0600d39d0",
         "description": "Samsung S23 Ultra là dòng điện thoại cao cấp của Samsung, sở hữu camera độ phân giải 200MP ấn tượng, chip Snapdragon 8 Gen 2 mạnh mẽ, bộ nhớ RAM 8GB mang lại hiệu suất xử lý vượt trội cùng khung viền vuông vức sang trọng. Sản phẩm được ra mắt từ đầu năm 2023."
     },
@@ -39,7 +39,7 @@
         "ratingsAverage": 4.8,
         "price": 32990000,
         "quantity": 17,
-        "image": "iphone-15-promax.jpg",
+        "thumbnail": "iphone-15-promax.jpg",
         "category": "656495468833e6e0600d39d6",
         "description": "iPhone 15 Pro Max thiết kế mới với chất liệu titan chuẩn hàng không vũ trụ bền bỉ, trọng lượng nhẹ, đồng thời trang bị nút Action và cổng sạc USB-C tiêu chuẩn giúp nâng cao tốc độ sạc. Khả năng chụp ảnh đỉnh cao của iPhone 15 bản Pro Max đến từ camera chính 48MP, camera UltraWide 12MP và camera teleimage có khả năng zoom quang học đến 5x. Bên cạnh đó, iPhone 15 ProMax sử dụng chip A17 Pro mới mạnh mẽ. Xem thêm chi tiết những điểm nổi bật của sản phẩm qua thông tin sau!"
     },
@@ -50,7 +50,7 @@
         "ratingsAverage": 4.7,
         "price": 3290000,
         "quantity": 14,
-        "image": "xiaomi-redmi-13c.jpg",
+        "thumbnail": "xiaomi-redmi-13c.jpg",
         "category": "6564953c8833e6e0600d39d4",
         "description": "Xiaomi Redmi 13C được trang bị màn hình IPS LCD 6,74 inches cùng độ phân giải 1600x720 pixels cho độ chi tiết vừa phải và độ chân thực cao. Sản phẩm được trang bị con chip chip MediaTek Helio G85 cùng bộ nhớ RAM 6GB mang lại hiệu năng ổn định. Hơn nữa, mẫu điện thoại Xiaomi Redmi 13C này còn sở hữu camera chính 50 MP và viên pin với dung lượng lên đến 5.000 mAh."
     },
@@ -61,7 +61,7 @@
         "ratingsAverage": 4.7,
         "price": 22990000,
         "quantity": 7,
-        "image": "oppo-final-3-flip.jpg",
+        "thumbnail": "oppo-final-3-flip.jpg",
         "category": "656495338833e6e0600d39d2",
         "description": "OPPO Find N3 Flip chính thức ra mắt thị trường Việt Nam ngày 26/10 sở hữu nhiều ưu điểm vượt trội: chip Dimensity 9200, RAM 12GB cùng bộ nhớ trong 256GB. Cạnh đó, camera điện thoại gập Find N3 Flip hợp tác cùng Hasselblad, ống kính chính độ phân giải 50MP và màn hình AMOLED 6.8 inch cho trải nghiệp quay chụp chuyên nghiệp hơn bao giờ hết."
     },
@@ -72,7 +72,7 @@
         "ratingsAverage": 4.4,
         "price": 44990000,
         "quantity": 10,
-        "image": "oppo-find-n3.jpg",
+        "thumbnail": "oppo-find-n3.jpg",
         "category": "656495338833e6e0600d39d2",
         "description": "OPPO Find N3 được chính thức ra mắt ngày 26/10 tại thị trường Việt Nam mang đến nhiều nâng cấp mới mẻ. Trên phiên bản điện thoại gập thế hệ thứ 3 này, OPPO tạo ra một mẫu flagship mạnh mẽ hơn với chip Qualcomm Snapdragon® 8 Gen 2 Mobile Platform, 16GB RAM, màn hình chính 7.82 inch, màn hinh ngoài 6.31 inch cùng hệ thống camera Hasselblad đầy ấn tượng."
     },
@@ -83,7 +83,7 @@
         "ratingsAverage": 4.8,
         "price": 13490000,
         "quantity": 25,
-        "image": "Xiaomi-13T-Pro-5G-green.jpg",
+        "thumbnail": "Xiaomi-13T-Pro-5G-green.jpg",
         "category": "6564953c8833e6e0600d39d4",
         "description": "Xiaomi 13T Pro là flagship mới nhất nhà Xiaomi, mạnh mẽ ấn tượng với chip MediaTek Dimensity 9200+, cùng với đó là RAM 12GB và bộ nhớ trong lên tới 512GB. Đặc biệt, khả năng chụp ảnh đỉnh cao nhờ cụm camera siêu chất, viên pin lớn 5000mAh cùng sạc nhanh 120W. Tất cả sẽ mang tới một siêu phẩm đình đám giúp bạn có được trải nghiệm độc đáo và khẳng định được cá tính của mình."
     },
@@ -94,7 +94,7 @@
         "ratingsAverage": 4.8,
         "price": 29490000,
         "quantity": 12,
-        "image": "galaxy-z-fold-5-xanh.jpg",
+        "thumbnail": "galaxy-z-fold-5-xanh.jpg",
         "category": "656495258833e6e0600d39d0",
         "description": "Samsung Galaxy Z Fold5 12GB 256GB tạo nên trải nghiệm xử lý tác vụ siêu mượt mà thông qua chipset Snapdragon 8 Gen 2 đỉnh cao cùng dung lượng RAM lên tới 12GB. Máy được trang bị công nghệ màn hình Dynamic AMOLED 2X 120Hz với kích thước có thể lên tới 7.6 inch khi mở, đem lại trải nghiệm hình ảnh sắc nét trong từng điểm ảnh. Bên cạnh đó, phân khúc smartphone gập này còn sở hữu cụm camera hiện đại với độ sắc nét đạt tới 50MP cùng viên pin 4400mAh."
     }

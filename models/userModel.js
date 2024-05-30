@@ -7,14 +7,14 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Please tell us your name!'],
+      required: [true, 'Vui lòng cung cấp tên của bạn!'],
     },
     email: {
       type: String,
-      required: [true, 'Please provide your email'],
+      required: [true, 'Vui lòng cung cấp email của bạn!'],
       unique: true,
       lowercase: true,
-      validate: [validator.isEmail, 'Please provide a valid email'],
+      validate: [validator.isEmail, 'Vui lòng cung cấp email hợp lệ!'],
     },
     photo: {
       type: String,
@@ -27,19 +27,19 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, 'Please provide a password'],
+      required: [true, 'Vui lòng cung cấp password!'],
       minlength: 8,
       select: false,
     },
     passwordConfirm: {
       type: String,
-      required: [true, 'Please confirm your password'],
+      required: [true, 'Vui lòng xác nhận lại password!'],
       validate: {
         // This only works on CREATE and SAVE!!!
         validator: function (el) {
           return el === this.password;
         },
-        message: 'Passwords are not the same!',
+        message: 'Password xác nhận không đúng!',
       },
     },
     passwordChangedAt: Date,
@@ -57,23 +57,17 @@ const userSchema = new mongoose.Schema(
   },
 );
 
-userSchema.virtual('cart', {
-  ref: 'Cart',
-  foreignField: 'user',
-  localField: '_id',
-});
+// userSchema.pre('save', async function (next) {
+//   // Only run this function if password was actually modified
+//   if (!this.isModified('password')) return next();
 
-userSchema.pre('save', async function (next) {
-  // Only run this function if password was actually modified
-  if (!this.isModified('password')) return next();
+//   // Hash the password with cost of 12
+//   this.password = await bcrypt.hash(this.password, 12);
 
-  // Hash the password with cost of 12
-  this.password = await bcrypt.hash(this.password, 12);
-
-  // Delete passwordConfirm field
-  this.passwordConfirm = undefined;
-  next();
-});
+//   // Delete passwordConfirm field
+//   this.passwordConfirm = undefined;
+//   next();
+// });
 
 userSchema.pre('save', function (next) {
   if (!this.isModified('password') || this.isNew) return next();

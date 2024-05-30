@@ -6,12 +6,8 @@ const router = express.Router({ mergeParams: true });
 
 router.use(authController.protect);
 
-router
-  .route('/')
-  .post(cartController.setPhoneUserIds, cartController.addToCart);
+router.route('/').post(cartController.addToCart).get(cartController.getAllCart);
 
-router
-  .route('/')
-  .get(authController.restrictTo('admin'), cartController.getAllCart);
+router.get('/myCart', cartController.getMyCart);
 
 module.exports = router;

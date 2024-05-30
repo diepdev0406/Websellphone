@@ -1,7 +1,7 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const Phone = require('../../models/phoneModel');
+const Product = require('../../models/productModel');
 const User = require('../../models/userModel');
 
 dotenv.config({ path: './config.env' });
@@ -11,10 +11,12 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD,
 );
 
-mongoose.connect(DB).then(() => console.log('DB connection successful!'));
+mongoose
+  .connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('DB connection successful!'));
 
 // READ JSON FILE
-const phones = JSON.parse(
+const products = JSON.parse(
   fs.readFileSync(`${__dirname}/phones-simple.json`, 'utf-8'),
 );
 
@@ -23,7 +25,7 @@ const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 // IMPORT DATA INTO DB
 const importData = async () => {
   try {
-    await Phone.create(phones);
+    await Product.create(products);
     await User.create(users);
     console.log('Data successfully loaded!');
   } catch (err) {
@@ -35,7 +37,7 @@ const importData = async () => {
 // DELETE ALL DATA FROM DB
 const deleteData = async () => {
   try {
-    await Phone.deleteMany();
+    await Product.deleteMany();
     await User.deleteMany();
     console.log('Data successfully deleted!');
   } catch (err) {

@@ -11,17 +11,14 @@ router
   .get(reviewController.getAllReviews)
   .post(
     authController.restrictTo('user'),
-    reviewController.setPhoneUserIds,
+    reviewController.setProductUserIds,
     reviewController.createReview,
   );
 
 router
   .route('/:id')
   .get(reviewController.getReview)
-  .patch(
-    authController.restrictTo('user', 'admin'),
-    reviewController.updateReview,
-  )
+  .patch(authController.restrictTo('user'), reviewController.updateReview)
   .delete(
     authController.restrictTo('user', 'admin'),
     reviewController.deleteReview,

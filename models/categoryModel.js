@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const categorySchema = mongoose.Schema(
   {
@@ -7,6 +8,12 @@ const categorySchema = mongoose.Schema(
       unique: true,
       required: [true, 'A category must have a name'],
     },
+    slug: String,
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+      select: false,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -14,10 +21,15 @@ const categorySchema = mongoose.Schema(
   },
 );
 
-categorySchema.virtual('phones', {
-  ref: 'Phone',
+categorySchema.virtual('products', {
+  ref: 'Product',
   foreignField: 'category',
   localField: '_id',
+});
+
+categorySchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
 });
 
 const Category = mongoose.model('Category', categorySchema);
